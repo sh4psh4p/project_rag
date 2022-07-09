@@ -1,3 +1,4 @@
 # project_rag
 
-hello
+hello welcome to rag
+
