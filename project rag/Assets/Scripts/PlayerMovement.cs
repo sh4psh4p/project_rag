@@ -2,64 +2,66 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float walkSpeed = 5;
-    public float sprintSpeed = 8;
-    public float jumpHeight = 1f;
-    public float gravity = -9.81f;
-    public Transform groundCheck;
-    public float groundDistance = 0.4f;
+    private float yaw = 0;
+    private float pitch = 0;
+    private float speed;
 
-    CharacterController controller;
-    float speed = 0;
-    Vector3 velocity;
-    bool isGrounded;
+    private Rigidbody rb;
+
+    private GameObject cam;
+
+    public float walkSpeed = 5f;
+    public float sprintSpeed = 8f;
+    public float sensitivity = 2;
+    public float jumpHeight = 2;
 
     void Start()
     {
-        QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 165;
+        Cursor.lockState = CursorLockMode.Locked;
+        rb = gameObject.transform.GetComponent<Rigidbody>();
 
-        if (GetComponent<CharacterController>() != null)
-        {
-            controller = GetComponent<CharacterController>();
-        }
-
-        else
-        {
-            controller = gameObject.AddComponent<CharacterController>();
-        }
+        cam = transform.GetComponentInChildren<Camera>().transform.gameObject;
     }
 
     void Update()
     {
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance);
+        Look();
 
-        if (isGrounded && velocity.y < 0)
+        if (Input.GetKeyDown(KeyCode.Space) && Physics.Raycast(rb.transform.position, Vector3.down, 1 + 0.001f))
         {
-            velocity.y = -2f;
+            rb.velocity = new Vector3(rb.velocity.x, jumpHeight, rb.velocity.z);
         }
-
-        float x = Input.GetAxisRaw("Horizontal");
-        float z = Input.GetAxisRaw("Vertical");
-
-        Vector3 move = transform.right * x + transform.forward * z;
-
-        if (Input.GetButtonDown("Jump") && isGrounded)
-        {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
-        }
-
-        controller.Move(move.normalized * speed * Time.deltaTime);
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
             speed = sprintSpeed;
         }
+
         else
         {
             speed = walkSpeed;
         }
+    }
+
+    private void FixedUpdate()
+    {
+        Movement();
+    }
+
+    void Look()
+    {
+        pitch -= Input.GetAxisRaw("Mouse Y") * sensitivity;
+        pitch = Mathf.Clamp(pitch, -90, 90);
+        yaw += Input.GetAxisRaw("Mouse X") * sensitivity;
+
+        cam.transform.localRotation = Quaternion.Euler(pitch, yaw, 0);
+    }
+
+    void Movement()
+    {
+        Vector2 axis = new Vector2(Input.GetAxisRaw("Vertical"), Input.GetAxisRaw("Horizontal")).normalized * speed;
+        Vector3 forward = new Vector3(-cam.transform.right.z, 0.0f, cam.transform.right.x);
+        Vector3 wishDirection = (forward * axis.x + cam.transform.right * axis.y + Vector3.up * rb.velocity.y);
+        rb.velocity = wishDirection;
     }
 }
