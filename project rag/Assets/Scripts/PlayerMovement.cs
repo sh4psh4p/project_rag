@@ -21,6 +21,10 @@ public class PlayerMovement : MonoBehaviour
         rb = gameObject.transform.GetComponent<Rigidbody>();
 
         cam = transform.GetComponentInChildren<Camera>().transform.gameObject;
+
+        QualitySettings.vSyncCount = 1;
+
+        Application.targetFrameRate = 165;
     }
 
     void Update()
