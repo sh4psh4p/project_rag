@@ -185,10 +185,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88a7afbfc1647544a95d573e42f97f93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ADSPosition: {x: 0, y: -0.09, z: 0.45}
-  StartPosition: {x: 0, y: 0, z: 0}
-  FullAuto: 1
-  Firerate: 600
+  aimPosition: {x: 0, y: -0.09, z: 0.45}
+  defaultPosition: {x: 0, y: 0, z: 0}
+  fullAuto: 1
+  fireRate: 600
 --- !u!1 &420606311
 GameObject:
   m_ObjectHideFlags: 0
@@ -1354,7 +1354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedWeapon: 0
-  PlayerShoot: {fileID: 3300222359549372972}
+  playerShoot: {fileID: 3300222359549372972}
 --- !u!1 &2681808801385925295
 GameObject:
   m_ObjectHideFlags: 0
@@ -1926,13 +1926,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BrokenMug: {fileID: 6580489783057568161, guid: 8f5dac18018cbf248af1b23b0305b1a0, type: 3}
-  CameraRecoil: {fileID: 729674804}
-  WeaponSwitching: {fileID: 1796175367}
-  WeaponSway: {fileID: 1534673255}
   aimSpeed: 20
-  SelectedWeaponObject: {fileID: 0}
-  SelectedWeapon: {fileID: 0}
-  TimeSinceLastShot: 0
+  selectedWeaponObject: {fileID: 0}
+  selectedWeapon: {fileID: 0}
+  timeSinceLastShot: 0
 --- !u!114 &1796175368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2276,7 +2273,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7886724648580785230
 Transform:
   m_ObjectHideFlags: 0
@@ -2307,10 +2304,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88a7afbfc1647544a95d573e42f97f93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ADSPosition: {x: 0, y: -0.11, z: 0.2}
-  StartPosition: {x: 0.551, y: -0.196, z: 0.422}
-  FullAuto: 0
-  Firerate: 500
+  aimPosition: {x: 0, y: -0.11, z: 0.2}
+  defaultPosition: {x: 0, y: 0, z: 0}
+  fullAuto: 0
+  fireRate: 500
 --- !u!1 &8262284864792059065
 GameObject:
   m_ObjectHideFlags: 0
