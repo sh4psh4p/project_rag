@@ -11,6 +11,7 @@ public class WeaponSway : MonoBehaviour
 
     public Vector3 initialPosition;
 
+    [HideInInspector]
     public bool aiming;
 
     void Start()

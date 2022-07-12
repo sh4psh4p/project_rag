@@ -6,15 +6,13 @@ public class WeaponSwitching : MonoBehaviour
 {
     public int selectedWeapon = 0;
 
-    public PlayerShoot PlayerShoot;
+    public PlayerShoot playerShoot;
 
-    // Start is called before the first frame update
     void Start()
     {
         SelectWeapon();
     }
 
-    // Update is called once per frame
     void Update()
     {
         int previousthing = selectedWeapon;
@@ -56,10 +54,8 @@ public class WeaponSwitching : MonoBehaviour
             if (i == selectedWeapon)
             {
                 weapon.gameObject.SetActive(true);
-
-                PlayerShoot.SelectedWeaponObject = weapon.gameObject;
-
-                PlayerShoot.SelectedWeapon = weapon.gameObject.transform.GetComponent<Weapon>();
+                playerShoot.selectedWeaponObject = weapon.gameObject;
+                playerShoot.selectedWeapon = weapon.gameObject.transform.GetComponent<Weapon>();
             }
             else
                 weapon.gameObject.SetActive(false);

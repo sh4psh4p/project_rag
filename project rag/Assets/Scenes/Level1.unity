@@ -553,6 +553,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1059756627 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3300222359549372972, guid: 8baf31d45ee5cd4488ab249f6ebdbd30, type: 3}
+  m_PrefabInstance: {fileID: 1796175365}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 316fe3b893835594baa1938d4ae04546, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1171712536
 GameObject:
   m_ObjectHideFlags: 0
@@ -1195,6 +1206,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 418336475, guid: 8baf31d45ee5cd4488ab249f6ebdbd30, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051088498, guid: 8baf31d45ee5cd4488ab249f6ebdbd30, type: 3}
+      propertyPath: fireRate
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051088498, guid: 8baf31d45ee5cd4488ab249f6ebdbd30, type: 3}
+      propertyPath: fullAuto
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051088498, guid: 8baf31d45ee5cd4488ab249f6ebdbd30, type: 3}
+      propertyPath: aimPosition.y
+      value: -0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051088498, guid: 8baf31d45ee5cd4488ab249f6ebdbd30, type: 3}
+      propertyPath: aimPosition.z
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103590419, guid: 8baf31d45ee5cd4488ab249f6ebdbd30, type: 3}
+      propertyPath: fireRate
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103590419, guid: 8baf31d45ee5cd4488ab249f6ebdbd30, type: 3}
+      propertyPath: aimPosition.y
+      value: -0.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103590419, guid: 8baf31d45ee5cd4488ab249f6ebdbd30, type: 3}
+      propertyPath: aimPosition.z
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1796175367, guid: 8baf31d45ee5cd4488ab249f6ebdbd30, type: 3}
+      propertyPath: playerShoot
+      value: 
+      objectReference: {fileID: 1059756627}
     - target: {fileID: 3300222359549372961, guid: 8baf31d45ee5cd4488ab249f6ebdbd30, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -1242,6 +1289,10 @@ PrefabInstance:
     - target: {fileID: 3300222359549372965, guid: 8baf31d45ee5cd4488ab249f6ebdbd30, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7912455838285548105, guid: 8baf31d45ee5cd4488ab249f6ebdbd30, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8baf31d45ee5cd4488ab249f6ebdbd30, type: 3}

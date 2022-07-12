@@ -5,35 +5,34 @@ using UnityEngine;
 public class PlayerShoot : MonoBehaviour
 {
     private GameObject cam;
+    private CameraRecoil cameraRecoil;
+    private WeaponSwitching weaponSwitching;
+    private WeaponSway weaponSway;
 
     public GameObject BrokenMug;
-
-    public CameraRecoil CameraRecoil;
-
-    public WeaponSwitching WeaponSwitching;
-
-    public WeaponSway WeaponSway;
-
     public float aimSpeed;
-
-    public GameObject SelectedWeaponObject;
-
-    public Weapon SelectedWeapon;
-
-    public float TimeSinceLastShot;
+    [HideInInspector]
+    public GameObject selectedWeaponObject;
+    [HideInInspector]
+    public Weapon selectedWeapon;
+    public float timeSinceLastShot;
 
     void Start()
     {
         cam = transform.GetComponentInChildren<Camera>().gameObject;
+        cameraRecoil = transform.GetComponentInChildren<CameraRecoil>();
+        weaponSwitching = transform.GetComponentInChildren<WeaponSwitching>();
+        weaponSway = transform.GetComponentInChildren<WeaponSway>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        TimeSinceLastShot += Time.deltaTime;
+        timeSinceLastShot += Time.deltaTime;
+
         if (Input.GetMouseButtonDown(0))
         {
-            if (SelectedWeapon.FullAuto == false)
+            if (selectedWeapon.fullAuto == false)
             {
                 Shoot();
             }
@@ -41,7 +40,7 @@ public class PlayerShoot : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
-            if (SelectedWeapon.FullAuto == true)
+            if (selectedWeapon.fullAuto == true)
             {
                 Shoot();
             }
@@ -51,14 +50,14 @@ public class PlayerShoot : MonoBehaviour
         {
             Aim(true);
 
-            WeaponSway.aiming = true;
+            weaponSway.aiming = true;
         }
 
         else
         {
             Aim(false);
 
-            WeaponSway.aiming = false;
+            weaponSway.aiming = false;
         }
     }
 
@@ -66,9 +65,9 @@ public class PlayerShoot : MonoBehaviour
     {
         if (CanShoot())
         {
-            CameraRecoil.Recoil();
+            cameraRecoil.Recoil();
 
-            TimeSinceLastShot = 0;
+            timeSinceLastShot = 0;
 
             RaycastHit hit;
             if (Physics.Raycast(cam.transform.position, cam.transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
@@ -99,14 +98,14 @@ public class PlayerShoot : MonoBehaviour
     {
         if (aiming == true)
         {
-            SelectedWeaponObject.transform.localPosition = Vector3.Lerp(SelectedWeaponObject.transform.localPosition, SelectedWeapon.ADSPosition, aimSpeed * Time.deltaTime);
+            selectedWeaponObject.transform.localPosition = Vector3.Lerp(selectedWeaponObject.transform.localPosition, selectedWeapon.aimPosition, aimSpeed * Time.deltaTime);
         }
 
         else
         {
-            SelectedWeaponObject.transform.localPosition = Vector3.Lerp(SelectedWeaponObject.transform.localPosition, SelectedWeapon.StartPosition, aimSpeed * Time.deltaTime);
+            selectedWeaponObject.transform.localPosition = Vector3.Lerp(selectedWeaponObject.transform.localPosition, selectedWeapon.defaultPosition, aimSpeed * Time.deltaTime);
         }
     }
 
-    public bool CanShoot() => TimeSinceLastShot > 1f / (SelectedWeapon.Firerate / 60);
+    public bool CanShoot() => timeSinceLastShot > 1f / (selectedWeapon.fireRate / 60);
 }
