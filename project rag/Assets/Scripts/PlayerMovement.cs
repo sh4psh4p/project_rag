@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         rb = gameObject.transform.GetComponent<Rigidbody>();
 
-        cam = transform.GetComponentInChildren<Camera>().transform.gameObject;
+        cam = transform.GetChild(0).transform.gameObject;
 
         QualitySettings.vSyncCount = 1;
 
@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
     void Movement()
     {
         Vector2 axis = new Vector2(Input.GetAxisRaw("Vertical"), Input.GetAxisRaw("Horizontal")).normalized * speed;
-        Vector3 forward = new Vector3(-cam.transform.right.z, 0.0f, cam.transform.right.x);
+        Vector3 forward = Quaternion.Euler(0, yaw, 0) * Vector3.forward;
         Vector3 wishDirection = (forward * axis.x + cam.transform.right * axis.y + Vector3.up * rb.velocity.y);
         rb.velocity = wishDirection;
     }
