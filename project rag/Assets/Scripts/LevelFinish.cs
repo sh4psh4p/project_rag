@@ -48,13 +48,15 @@ public class LevelFinish : MonoBehaviour
             {
                 PlayerPrefs.SetInt("Level" + NextLevel.ToString() + "Unlocked", 1);
 
-                SceneManager.LoadScene("Level" + NextLevel.ToString());
+                //SceneManager.LoadScene("Level" + NextLevel.ToString());
             }
 
             else
             {
-                SceneManager.LoadScene("MenuScene");
+                //SceneManager.LoadScene("MenuScene");
             }
+
+            col.transform.GetComponent<PlayerManager>().LevelEnd();
         }
     }
 }

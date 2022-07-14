@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LevelSettings : MonoBehaviour
 {
+    public int level;
     public float BronzeTime;
     public float SilverTime;
     public float GoldTime;
