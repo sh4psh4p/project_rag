@@ -180,7 +180,7 @@ public class PlayerManager : MonoBehaviour
 
         if (PlayerPrefs.GetInt("Level" + levelSettings.level + "Gold") == 1)
         {
-            LevelEndBronzeCoin.SetActive(true);
+            LevelEndGoldCoin.SetActive(true);
 
             LevelEndSilverCoin.SetActive(false);
             LevelEndBronzeCoin.SetActive(false);
