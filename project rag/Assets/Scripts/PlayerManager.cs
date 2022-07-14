@@ -14,13 +14,23 @@ public class PlayerManager : MonoBehaviour
 
     public TMP_Text LevelNameText;
 
+    public GameObject PauseMenuNextLevel;
+
+    public GameObject PauseMenuPreviousLevel;
+
+    public GameObject PauseMenuNextLevelMenu;
+
+    public GameObject PauseMenuPreviousLevelMenu;
+
+    public GameObject LevelEndNextLevel;
+
+    public GameObject LevelEndPreviousLevel;
+
+    public GameObject LevelEndNextLevelMenu;
+
+    public GameObject LevelEndPreviousLevelMenu;
+
     public GameObject NextLevelBlocker;
-
-    public GameObject PreviousLevelBlocker;
-
-    public GameObject LevelEndNextLevelBlocker;
-
-    public GameObject LevelEndPreviousLevelBlocker;
 
     public GameObject LevelEndMenu;
 
@@ -64,16 +74,29 @@ public class PlayerManager : MonoBehaviour
 
         if (levelSettings.level == 1)
         {
-            PreviousLevelBlocker.SetActive(true);
+            PauseMenuPreviousLevel.SetActive(false);
 
-            LevelEndPreviousLevelBlocker.SetActive(true);
+            PauseMenuPreviousLevelMenu.SetActive(true);
+
+            LevelEndPreviousLevel.SetActive(false);
+
+            LevelEndPreviousLevelMenu.SetActive(true);
         }
 
         if (levelSettings.level == 5)
         {
-            NextLevelBlocker.SetActive(true);
+            PauseMenuNextLevel.SetActive(false);
 
-            LevelEndNextLevelBlocker.SetActive(true);
+            PauseMenuNextLevelMenu.SetActive(true);
+
+            LevelEndNextLevel.SetActive(false);
+
+            LevelEndNextLevelMenu.SetActive(true);
+        }
+
+        if (PlayerPrefs.GetInt("Level" + (levelSettings.level + 1).ToString() + "Unlocked") == 0)
+        {
+            NextLevelBlocker.SetActive(true);
         }
     }
 
@@ -110,6 +133,11 @@ public class PlayerManager : MonoBehaviour
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MenuScene");
     }
 
     public void LevelEnd()

@@ -47,6 +47,8 @@ public class MainMenuManager : MonoBehaviour
 
         Cursor.visible = true;
 
+        Time.timeScale = 1;
+
         LevelMenu.SetBool("Enable", true);
 
         OptionsMenu.SetBool("Enable", true);
